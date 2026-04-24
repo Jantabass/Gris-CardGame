@@ -1,0 +1,203 @@
+:root {
+  --bg: #12061f;
+  --panel: #22113a;
+  --accent: #00ff9f;
+  --accent2: #ff4fd8;
+  --text: #e7fffb;
+}
+
+body {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background: radial-gradient(circle at top, #2b1055, #09010f);
+  color: var(--text);
+  overflow: hidden;
+}
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+}
+
+.screen.active { display: block; }
+
+.title {
+  font-size: 4rem;
+  color: var(--accent);
+  text-shadow: 4px 4px 0 var(--accent2);
+  animation: pulse 2s infinite;
+}
+
+button {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  margin: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 0 15px var(--accent);
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+.player-area {
+  min-height: 180px;
+  margin: 20px 0;
+}
+
+.card-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 80px;
+  height: 120px;
+  background: linear-gradient(145deg, #fff, #ddd);
+  border-radius: 10px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  transition: all 0.25s;
+}
+
+.card:hover { transform: translateY(-8px); }
+.card.back {
+  background: linear-gradient(145deg, #ff4fd8, #6f00ff);
+  color: transparent;
+}
+.card.red { color: #d11; }
+
+#pile-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+.pile {
+  width: 80px;
+  height: 120px;
+  border: 3px dashed var(--accent);
+  border-radius: 10px;
+}
+
+.victory-effect {
+  font-size: 3rem;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Sørger for at alt får plass uten zooming */
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Container for kortene på bordet (oppe og nede) */
+.table-cards {
+  display: flex;
+  gap: 15px;
+  position: relative;
+}
+
+/* Beholder for hvert kort-par (skjult kort + åpent kort oppå) */
+.card-stack {
+  position: relative;
+  width: 60px; /* Juster etter din kortstørrelse */
+  height: 90px;
+}
+
+.card.down {
+  position: absolute;
+  top: 10px; /* Stikker litt ut i bunnen */
+  z-index: 1;
+}
+
+.card.up {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+/* Skille mellom hånd og bordkort */
+.hand-container {
+  border: 2px dashed #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  margin: 10px 0;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Hindrer scrolling */
+  font-family: sans-serif;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #2c3e50;
+  color: white;
+}
+
+.area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0; /* Viktig for flex-krymping */
+}
+
+/* Knapp som lyser opp når du må trekke */
+#pickupBtn.must-pickup {
+  background-color: #e74c3c;
+  box-shadow: 0 0 20px #ff0000;
+  animation: pulse 1.5s infinite;
+  border: 2px solid white;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.card {
+  width: 50px; /* Litt mindre kort for å spare plass */
+  height: 75px;
+  font-size: 14px;
+}
